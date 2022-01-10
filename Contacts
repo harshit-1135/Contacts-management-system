@@ -1,0 +1,212 @@
+#include <stdio.h>
+#include <strings.h>
+
+struct phonebook
+{
+  long int number;
+  char First_Name[20];
+  char Last_Name[20];
+};
+
+int
+main ()
+{
+  struct phonebook contacts[20];
+
+  int i, n, k, m;
+
+  char c[20];
+
+  char d[20];
+
+  char e[20];
+
+main:
+  printf ("\n\t********* CONTACTS :- *********");
+  printf ("\n\t*******************************");
+
+  printf ("\n\t[1] Save new contacts : ");
+  printf ("\n\t[2] Search a contact : ");
+  printf ("\n\t[3] Edit a contact : ");
+  printf ("\n\t[4] Delete a contact : ");
+  printf ("\n\t[5] Exit : ");
+ 
+  printf ("\n\n\tEnter your choice :");
+  scanf ("%d", &n);
+
+  switch (n)
+
+    {
+
+    case 1:
+      printf ("\n\t********* New Contact *********");
+      printf ("\n\tHow many contacts you want to save ? ");
+
+      scanf ("%d", &k);
+
+      for (i = 0; i < k; i++)
+	{
+
+	  printf ("\n\tContact%d's Information : ", i + 1);
+	  printf ("\n\t**************************");
+	  printf ("\n\tEnter First Name : ");
+	  scanf ("%s", contacts[i].First_Name);
+	  printf ("\n\tEnter Last Name : ");
+	  scanf ("%s", contacts[i].Last_Name);
+	  printf ("\n\tEnter Phone Number : ");
+	  scanf ("%ld", &contacts[i].number);
+
+	}
+
+      for (i = 0; i < k; i++)
+	{
+
+	  printf ("\n\tContact%d's Information : ", i + 1);
+	  printf ("\n\t**************************");
+	  printf ("\n\t First Name : ");
+	  printf ("%s", contacts[i].First_Name);
+	  printf ("\n\t Last Name : ");
+	  printf ("%s", contacts[i].Last_Name);
+	  printf ("\n\t Phone Number : ");
+	  printf ("%ld\n", contacts[i].number);
+
+	}
+
+      goto main;
+      break;
+
+    case 2:
+
+      printf ("\n\tEnter the first name of contact : ");
+      scanf ("%s", c);
+
+      for (i = 0; i < 100; i++)
+	{
+	  if (strcmp (c, contacts[i].First_Name) == 0)
+	    {
+	      printf ("\n\t********* Contact Details *********");
+	      printf ("\n\tFirst Name : %s", contacts[i].First_Name);
+	      printf ("\n\tLast Name : %s", contacts[i].Last_Name);
+	      printf ("\n\tPhone Number : %ld\n", contacts[i].number);
+	      break;
+	    }
+
+	  if (i < n)
+
+	    {
+	      printf (" ");
+	    }
+
+	  else
+	    {
+	      printf ("\tContact does not exist!!\n");
+	      break;
+	    }
+
+
+	}
+      goto main;
+      break;
+    case 3:
+      printf ("\n\tEnter the first name of contact you want to edit : ");
+      scanf ("%s", d);
+      for (i = 0; i < 100; i++)
+	{
+	  if (strcmp (d, contacts[i].First_Name) == 0)
+	    {
+	      printf ("\n\t********* Contact Details *********");
+	      printf ("\n\tFirst Name : %s", contacts[i].First_Name);
+	      printf ("\n\tLast Name : %s", contacts[i].Last_Name);
+	      printf ("\n\tPhone Number : %ld", contacts[i].number);
+	      printf
+		("\n\n\t[1]Edit first name :\n\t[2]Edit last name :\n\t[3]Edit Phone number :");
+	      printf ("\n\t");
+	      scanf ("%d", &m);
+	      switch (m)
+		{
+		case 1:
+		  printf ("\n\tEnter New First name : ");
+		  scanf ("%s", contacts[i].First_Name);
+		  printf ("\t********* New Contact Details *********");
+		  printf ("\n\tFirst Name : %s", contacts[i].First_Name);
+		  printf ("\n\tLast Name : %s", contacts[i].Last_Name);
+		  printf ("\n\tPhone Number : %ld\n", contacts[i].number);
+		  break;
+		case 2:
+		  printf ("\n\tEnter New Last name :");
+		  scanf ("%s", contacts[i].Last_Name);
+		  printf ("\t********* New Contact Details *********");
+		  printf ("\n\tFirst Name : %s", contacts[i].First_Name);
+		  printf ("\n\tLast Name : %s", contacts[i].Last_Name);
+		  printf ("\n\tPhone Number : %ld\n", contacts[i].number);
+		  break;
+		case 3:
+		  printf ("\n\tEnter new phone number :");
+		  scanf ("%ld", &contacts[i].number);
+		  printf ("\n\t********* New Contact Details *********");
+		  printf ("\n\tFirst Name : %s", contacts[i].First_Name);
+		  printf ("\n\tLast Name : %s", contacts[i].Last_Name);
+		  printf ("\n\tPhone Number : %ld\n", contacts[i].number);
+		  break;
+		default:
+		  printf ("\tPlease choose a valid option\n");
+		  break;
+		}
+	      break;
+	    }
+	  if (i < n)
+	    {
+	      printf (" ");
+	    }
+	  else
+	    {
+	      printf ("\n\tContact does not exist!!\n");
+	      break;
+	    }
+
+
+	}
+      goto main;
+      break;
+
+    case 4:
+      printf ("\n\tEnter the first name of contact : ");
+      scanf ("%s", e);
+
+      for (i = 0; i < 100; i++)
+	{
+	  if (strcmp (e, contacts[i].First_Name) == 0)
+	    {
+	      contacts[i] = contacts[i + 1];
+	      printf ("\n\tDeleted succefully");
+	      break;
+	    }
+
+	  if (i < n)
+
+	    {
+	      printf (" ");
+	    }
+
+	  else
+	    {
+	      printf ("\tContact does not exist!!\n");
+	      break;
+	    }
+	}
+      goto main;
+      break;
+
+    case 5:
+      return 0;
+
+    default:
+      printf ("\n\tchoose a valid option");
+      goto main;
+    }
+
+
+
+  return 0;
+}
+
